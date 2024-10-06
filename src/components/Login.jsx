@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
@@ -10,11 +10,15 @@ const Login = () => {
   const [password, setPassword] = useState("Harsh@123");
   const [error, setError] = useState("");
   const dispatch = useDispatch();
+  
+  const user = useSelector((store)=>store.user);
 
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    
+    if(user){
+      return navigate('/');
+    };
     try {
       const res = await axios.post(
         BASE_URL+"/login",
@@ -30,6 +34,8 @@ const Login = () => {
       setError(err?.response?.data || "Something went wrong!");
     }
   };
+
+  
 
   return (
     <div className="flex justify-center m-7">

@@ -7,7 +7,7 @@ const UserCard = ({ user }) => {
     <div className="card card-compact bg-base-300 w-96 shadow-xl">
         <figure>
             <img
-            src={photUrl}
+            src={photUrl }
             alt="User Photo" />
         </figure>
         <div className="card-body">

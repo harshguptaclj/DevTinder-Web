@@ -9,7 +9,8 @@ const Navbar = () => {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  
+  
   const handleLogout = async()=>{
     try{
       await axios.post(BASE_URL+ '/logout',{}, {withCredentials:true});
@@ -30,7 +31,7 @@ const Navbar = () => {
           
           {user &&
           <>
-          <div className='hidden md:block'>Welcome, {user?.firstName}</div>
+          <div className='hidden md:block'>Welcome, {user?.data?.firstName || user?.firstName}</div>
           <div className="dropdown dropdown-end mx-4">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
