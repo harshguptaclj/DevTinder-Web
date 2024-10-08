@@ -16,6 +16,7 @@ const Requests = () => {
         { withCredentials: true }
       );
       dispatch(removeRequest(_id));
+      fetchRequests();
     } catch (err) {}
   };
 
